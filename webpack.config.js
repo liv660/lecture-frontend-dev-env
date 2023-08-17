@@ -29,15 +29,16 @@ module.exports = {
       },
       {
         test: /\.(png|jpg|svg|gif)$/,
-        loader: "url-loader",
-        options: {
-          name: "[name].[ext]?[hash]",
-          limit: 10000 // 10Kb
-        }
-      }
+        type: 'asset'
+      },
       /**
        * TODO: babel-loader를 구성해 보세요.
        */
+      {
+        test: /\.js$/,
+        loader: 'babel-loader',
+        exclude: /node_modules/
+      }
     ]
   },
   plugins: [
