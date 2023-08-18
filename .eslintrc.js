@@ -1,18 +1,26 @@
 module.exports = {
     "env": {
         "browser": true,
-        "es6": true
+        "es2021": true
     },
-    "extends": "eslint:recommended",
-    "globals": {
-        "Atomics": "readonly",
-        "SharedArrayBuffer": "readonly"
-    },
+    "extends": ["eslint:recommended", "plugin:prettier/recommended"],
+    "overrides": [
+        {
+            "env": {
+                "node": true
+            },
+            "files": [
+                ".eslintrc.{js,cjs}"
+            ],
+            "parserOptions": {
+                "sourceType": "script"
+            }
+        }
+    ],
     "parserOptions": {
-        "ecmaVersion": 2018,
+        "ecmaVersion": "latest",
         "sourceType": "module"
     },
-    // TODO: 프리티어 설정을 추가하세요.
     "rules": {
     }
-};
+}
