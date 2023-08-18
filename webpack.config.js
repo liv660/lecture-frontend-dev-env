@@ -6,6 +6,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   mode: "development",
+  stats: "errors-only",
   entry: {
     main: "./src/app.js"
   },
@@ -14,9 +15,12 @@ module.exports = {
     path: path.resolve("./dist")
   },
   devServer: {
-    overlay: true,
-    stats: "errors-only"
-    // TODO: 여기에 api 서버 프록싱 설정을 추가하세요
+    client: {
+      overlay: true,
+    },
+    proxy: {
+      '/api': 'http://localhost:8081'
+    }
   },
   module: {
     rules: [
